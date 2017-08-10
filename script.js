@@ -37,7 +37,31 @@ $(document).ready(function(){
             data:data,
             type:"GET",
             success: function(response){
-                console.log(response); 
+                
+                var nextLine = "<br>";
+                var weather = response.weather[0];
+                /*
+                console.log(response.name); 
+                console.log(response.main.temp);
+                console.log(response.weather[0].main);
+                console.log(response.weather[0].icon);
+                console.log(response.weather[0].description);
+                */
+                var html = "<p class='center-text'>";
+                
+                html += response.name;
+                html += nextLine;
+                html += response.main.temp;
+                html += nextLine;
+                html += weather.main;
+                html += nextLine;
+                html += "<img src="+"https://openweathermap.org/img/w/"+weather.icon+".png>";
+                html += nextLine;
+                html += weather.description;                
+                html += "</p>";
+
+                $(".weather").html(html);
+                
             }
         });
     }
